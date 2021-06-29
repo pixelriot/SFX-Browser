@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/ItemContainer.gd" type="Script" id=1]
+[ext_resource path="res://assets/ic_note.svg" type="Texture" id=2]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/ic_favorite.svg" type="Texture" id=4]
+[ext_resource path="res://assets/ic_unfavorite.svg" type="Texture" id=5]
+[ext_resource path="res://assets/ic_clear.svg" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/IBMPlexMono-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 7 )
+
+[node name="ItemContainer" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -144.0
+margin_bottom = -576.0
+rect_min_size = Vector2( 0, 30 )
+focus_mode = 2
+mouse_filter = 0
+size_flags_horizontal = 7
+theme = ExtResource( 3 )
+custom_constants/separation = 10
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+modulate = Color( 0.807843, 0.917647, 0.780392, 1 )
+margin_right = 24.0
+margin_bottom = 30.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Idx" type="Label" parent="."]
+margin_left = 34.0
+margin_right = 58.0
+margin_bottom = 30.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 1 )
+text = "idx"
+align = 2
+valign = 1
+
+[node name="File" type="Label" parent="."]
+margin_left = 68.0
+margin_right = 508.0
+margin_bottom = 30.0
+size_flags_horizontal = 15
+size_flags_vertical = 3
+text = "filename"
+valign = 1
+clip_text = true
+
+[node name="VSeparator" type="VSeparator" parent="."]
+margin_left = 518.0
+margin_right = 538.0
+margin_bottom = 30.0
+custom_constants/separation = 20
+
+[node name="Length" type="Label" parent="."]
+margin_left = 548.0
+margin_right = 580.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 20, 0 )
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "-:--"
+valign = 1
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+margin_left = 590.0
+margin_right = 610.0
+margin_bottom = 30.0
+custom_constants/separation = 20
+
+[node name="Favourite" type="TextureButton" parent="."]
+modulate = Color( 0.839216, 0.466667, 0.533333, 1 )
+margin_left = 620.0
+margin_right = 650.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+expand = true
+stretch_mode = 3
+
+[node name="ExportName" type="LineEdit" parent="."]
+margin_left = 660.0
+margin_right = 860.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 13
+size_flags_vertical = 0
+custom_icons/clear = ExtResource( 6 )
+clear_button_enabled = true
+placeholder_text = "export file name"
+placeholder_alpha = 0.25
+
+[node name="VSeparator3" type="VSeparator" parent="."]
+margin_left = 870.0
+margin_right = 880.0
+margin_bottom = 30.0
+custom_constants/separation = 10
+
+[connection signal="focus_entered" from="." to="." method="_on_ItemContainer_focus_entered"]
+[connection signal="toggled" from="Favourite" to="." method="_on_Favourite_toggled"]

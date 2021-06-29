@@ -1,0 +1,15 @@
+id,en
+APP_TITLE,Sample Browser
+APP_INFO,Version %s \nDeveloped by Monolith of Minds
+LOAD,Library
+LOAD_POPUP,Select sample library folder
+INFOBROWSER,ctrl + o \n\nStart by selecting which folder you want to rummage through.
+INFO0,↑ & ↓ \n\nQuickly move though your library.
+INFO1,Space or LMB \n\nPlay the selected sample. \nRMB to Stop playback.
+INFO2,F \n\nMark the selected sample as a favourite.
+INFO3,abc... \n\nEnter a new name for the sample after export.
+CLEAR,clear all
+EXPORT,Export
+EXPORT_POPUP,Select export directory
+NO_EXPORT_FILES,"Nothing to export. Enter new export file names for the files you wish to export."
+EXPORT_INFO,%s file(s) exported to %s

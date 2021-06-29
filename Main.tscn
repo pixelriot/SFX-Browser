@@ -1,0 +1,665 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://src/Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/logo.svg" type="Texture" id=2]
+[ext_resource path="res://assets/ic_folder.svg" type="Texture" id=3]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/ic_loop.svg" type="Texture" id=5]
+[ext_resource path="res://assets/ic_stop.svg" type="Texture" id=6]
+[ext_resource path="res://src/AnalizeThread.gd" type="Script" id=7]
+[ext_resource path="res://src/DirectoryBrowser.gd" type="Script" id=8]
+[ext_resource path="res://src/Playlist.gd" type="Script" id=9]
+[ext_resource path="res://src/Playback.gd" type="Script" id=10]
+[ext_resource path="res://src/Export.gd" type="Script" id=11]
+[ext_resource path="res://assets/ic_clear.svg" type="Texture" id=12]
+[ext_resource path="res://src/MessageBox.gd" type="Script" id=13]
+[ext_resource path="res://assets/ic_info.svg" type="Texture" id=14]
+[ext_resource path="res://assets/ic_help.svg" type="Texture" id=15]
+[ext_resource path="res://src/HelpPanel.gd" type="Script" id=16]
+[ext_resource path="res://src/InfoBox.gd" type="Script" id=17]
+
+[sub_resource type="InputEventKey" id=1]
+control = true
+command = true
+scancode = 79
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.733333, 0.823529, 0.819608, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="InputEventKey" id=6]
+scancode = 32
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[sub_resource type="InputEventKey" id=8]
+scancode = 76
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.807843, 0.917647, 0.780392, 1 )
+
+[sub_resource type="Animation" id=11]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.839216, 0.466667, 0.533333, 1 )
+
+[sub_resource type="Animation" id=14]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+
+[node name="Main" type="HSplitContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 260.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 260, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 260.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirectoryBrowser" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 580.0
+custom_constants/separation = 10
+script = ExtResource( 8 )
+
+[node name="Load" type="Button" parent="PanelContainer/MarginContainer/DirectoryBrowser"]
+modulate = Color( 0.733333, 0.823529, 0.819608, 1 )
+margin_right = 220.0
+margin_bottom = 25.0
+shortcut = SubResource( 2 )
+text = "Root Folder"
+icon = ExtResource( 3 )
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BrowserHelp" type="PanelContainer" parent="PanelContainer/MarginContainer/DirectoryBrowser"]
+margin_top = 35.0
+margin_right = 220.0
+margin_bottom = 234.0
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp"]
+anims/hide = SubResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp"]
+margin_right = 220.0
+margin_bottom = 199.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 200.0
+margin_bottom = 179.0
+
+[node name="InfoBrowser" type="Label" parent="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp/MarginContainer/HBoxContainer"]
+margin_right = 152.0
+margin_bottom = 159.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+text = "ctrl + o
+
+Start by selecting which folder you want to rummage through."
+autowrap = true
+
+[node name="Close" type="Button" parent="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp/MarginContainer/HBoxContainer"]
+modulate = Color( 0.215686, 0.215686, 0.27451, 1 )
+margin_left = 156.0
+margin_right = 180.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 12 )
+flat = true
+
+[node name="Tree" type="Tree" parent="PanelContainer/MarginContainer/DirectoryBrowser"]
+margin_top = 244.0
+margin_right = 220.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_vertical = 3
+hide_root = true
+
+[node name="FileDialog" type="FileDialog" parent="PanelContainer/MarginContainer/DirectoryBrowser"]
+margin_top = 386.0
+margin_right = 506.0
+margin_bottom = 578.0
+custom_colors/files_disabled = Color( 0.733333, 0.823529, 0.819608, 0.627451 )
+custom_colors/file_icon_modulate = Color( 0.733333, 0.823529, 0.819608, 1 )
+window_title = "Open a Directory"
+resizable = true
+mode = 2
+access = 2
+current_dir = "/home/richi/Projekte/gdsamplebrowser"
+current_path = "/home/richi/Projekte/gdsamplebrowser/"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 272.0
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/margin_left = 6
+
+[node name="Workbench" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 6.0
+margin_top = 20.0
+margin_right = 732.0
+margin_bottom = 580.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Playback" type="HBoxContainer" parent="MarginContainer/Workbench"]
+margin_right = 726.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 15
+custom_constants/separation = 10
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/Workbench/Playback"]
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/Workbench/Playback"]
+margin_right = 24.0
+margin_bottom = 25.0
+texture = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="MarginContainer/Workbench/Playback"]
+modulate = Color( 0.807843, 0.917647, 0.780392, 1 )
+margin_left = 34.0
+margin_right = 138.0
+margin_bottom = 25.0
+size_flags_horizontal = 13
+size_flags_vertical = 15
+text = "SFX Browser"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Workbench/Playback"]
+margin_left = 148.0
+margin_right = 590.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 5 )
+
+[node name="Play" type="Button" parent="MarginContainer/Workbench/Playback"]
+modulate = Color( 0.45098, 0.45098, 0.509804, 1 )
+margin_left = 600.0
+margin_right = 624.0
+margin_bottom = 25.0
+shortcut = SubResource( 7 )
+icon = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loop" type="Button" parent="MarginContainer/Workbench/Playback"]
+modulate = Color( 0.45098, 0.45098, 0.509804, 1 )
+margin_left = 634.0
+margin_right = 658.0
+margin_bottom = 25.0
+toggle_mode = true
+keep_pressed_outside = true
+shortcut = SubResource( 9 )
+icon = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Button" parent="MarginContainer/Workbench/Playback"]
+modulate = Color( 0.45098, 0.45098, 0.509804, 1 )
+margin_left = 668.0
+margin_right = 692.0
+margin_bottom = 25.0
+icon = ExtResource( 15 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Button" parent="MarginContainer/Workbench/Playback"]
+modulate = Color( 0.45098, 0.45098, 0.509804, 1 )
+margin_left = 702.0
+margin_right = 726.0
+margin_bottom = 25.0
+icon = ExtResource( 14 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoBox" type="PanelContainer" parent="MarginContainer/Workbench"]
+margin_top = 35.0
+margin_right = 726.0
+margin_bottom = 80.0
+custom_styles/panel = SubResource( 10 )
+script = ExtResource( 17 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Workbench/InfoBox"]
+anims/hide = SubResource( 11 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Workbench/InfoBox"]
+margin_right = 726.0
+margin_bottom = 45.0
+custom_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Workbench/InfoBox/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 706.0
+margin_bottom = 45.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Workbench/InfoBox/MarginContainer/HBoxContainer"]
+margin_right = 658.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_colors/default_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+bbcode_enabled = true
+bbcode_text = "SAMPLE BROWSER"
+text = "SAMPLE BROWSER"
+fit_content_height = true
+
+[node name="Close" type="Button" parent="MarginContainer/Workbench/InfoBox/MarginContainer/HBoxContainer"]
+modulate = Color( 0.215686, 0.215686, 0.27451, 1 )
+margin_left = 662.0
+margin_right = 686.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 12 )
+flat = true
+
+[node name="PlaybackHelp" type="PanelContainer" parent="MarginContainer/Workbench"]
+margin_top = 90.0
+margin_right = 726.0
+margin_bottom = 289.0
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Workbench/PlaybackHelp"]
+anims/hide = SubResource( 12 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Workbench/PlaybackHelp"]
+margin_right = 726.0
+margin_bottom = 199.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Workbench/PlaybackHelp/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 706.0
+margin_bottom = 179.0
+custom_constants/separation = 20
+
+[node name="Info0" type="Label" parent="MarginContainer/Workbench/PlaybackHelp/MarginContainer/HBoxContainer"]
+margin_right = 145.0
+margin_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+text = "ctrl + o
+
+Start by selecting which folder you want to rummage through."
+autowrap = true
+
+[node name="Info1" type="Label" parent="MarginContainer/Workbench/PlaybackHelp/MarginContainer/HBoxContainer"]
+margin_left = 165.0
+margin_right = 311.0
+margin_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+text = "ctrl + o
+
+Start by selecting which folder you want to rummage through."
+autowrap = true
+
+[node name="Info2" type="Label" parent="MarginContainer/Workbench/PlaybackHelp/MarginContainer/HBoxContainer"]
+margin_left = 331.0
+margin_right = 476.0
+margin_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+text = "ctrl + o
+
+Start by selecting which folder you want to rummage through."
+autowrap = true
+
+[node name="Info3" type="Label" parent="MarginContainer/Workbench/PlaybackHelp/MarginContainer/HBoxContainer"]
+margin_left = 496.0
+margin_right = 642.0
+margin_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+text = "ctrl + o
+
+Start by selecting which folder you want to rummage through."
+autowrap = true
+
+[node name="Close" type="Button" parent="MarginContainer/Workbench/PlaybackHelp/MarginContainer/HBoxContainer"]
+modulate = Color( 0.215686, 0.215686, 0.27451, 1 )
+margin_left = 662.0
+margin_right = 686.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 12 )
+flat = true
+
+[node name="HSeparator1" type="HSeparator" parent="MarginContainer/Workbench"]
+margin_top = 299.0
+margin_right = 726.0
+margin_bottom = 309.0
+size_flags_horizontal = 3
+
+[node name="Playlist" type="ScrollContainer" parent="MarginContainer/Workbench"]
+margin_top = 319.0
+margin_right = 726.0
+margin_bottom = 430.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnalizeThread" type="Node" parent="MarginContainer/Workbench/Playlist"]
+script = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Workbench/Playlist"]
+margin_right = 726.0
+margin_bottom = 111.0
+size_flags_horizontal = 3
+size_flags_vertical = 15
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Workbench"]
+margin_top = 440.0
+margin_right = 726.0
+margin_bottom = 450.0
+size_flags_horizontal = 3
+
+[node name="MessageBox" type="PanelContainer" parent="MarginContainer/Workbench"]
+margin_top = 460.0
+margin_right = 726.0
+margin_bottom = 525.0
+rect_min_size = Vector2( 0, 40 )
+custom_styles/panel = SubResource( 13 )
+script = ExtResource( 13 )
+
+[node name="Timer" type="Timer" parent="MarginContainer/Workbench/MessageBox"]
+wait_time = 8.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Workbench/MessageBox"]
+anims/hide = SubResource( 14 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Workbench/MessageBox"]
+margin_right = 726.0
+margin_bottom = 65.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Workbench/MessageBox/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 706.0
+margin_bottom = 45.0
+
+[node name="Label" type="Label" parent="MarginContainer/Workbench/MessageBox/MarginContainer/HBoxContainer"]
+margin_right = 658.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.27451, 1 )
+text = "error text"
+
+[node name="Close" type="Button" parent="MarginContainer/Workbench/MessageBox/MarginContainer/HBoxContainer"]
+modulate = Color( 0.215686, 0.215686, 0.27451, 1 )
+margin_left = 662.0
+margin_right = 686.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 12 )
+
+[node name="Export" type="HBoxContainer" parent="MarginContainer/Workbench"]
+margin_top = 535.0
+margin_right = 726.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+custom_constants/separation = 10
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clear" type="Button" parent="MarginContainer/Workbench/Export"]
+modulate = Color( 0.733333, 0.823529, 0.819608, 1 )
+margin_right = 138.0
+margin_bottom = 25.0
+text = "clear all"
+icon = ExtResource( 12 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Workbench/Export"]
+margin_left = 148.0
+margin_right = 188.0
+margin_bottom = 25.0
+
+[node name="ExportPath" type="Button" parent="MarginContainer/Workbench/Export"]
+modulate = Color( 0.733333, 0.823529, 0.819608, 1 )
+margin_left = 198.0
+margin_right = 222.0
+margin_bottom = 25.0
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FolderPath" type="Label" parent="MarginContainer/Workbench/Export"]
+margin_left = 232.0
+margin_right = 650.0
+margin_bottom = 25.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Export" type="Button" parent="MarginContainer/Workbench/Export"]
+margin_left = 660.0
+margin_right = 726.0
+margin_bottom = 25.0
+text = "export"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="MarginContainer/Workbench/Export"]
+margin_left = 269.0
+margin_right = 732.0
+margin_bottom = 143.0
+window_title = "Open a Directory"
+resizable = true
+mode = 2
+access = 2
+current_dir = "/home/richi/Projekte/gdsamplebrowser"
+current_path = "/home/richi/Projekte/gdsamplebrowser/"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/DirectoryBrowser/Load" to="PanelContainer/MarginContainer/DirectoryBrowser" method="_on_Load_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp/MarginContainer/HBoxContainer/Close" to="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp" method="_on_Close_pressed"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/DirectoryBrowser/Tree" to="PanelContainer/MarginContainer/DirectoryBrowser" method="_on_Tree_item_selected"]
+[connection signal="dir_selected" from="PanelContainer/MarginContainer/DirectoryBrowser/FileDialog" to="PanelContainer/MarginContainer/DirectoryBrowser" method="_on_FileDialog_dir_selected"]
+[connection signal="finished" from="MarginContainer/Workbench/Playback/AudioStreamPlayer" to="MarginContainer/Workbench/Playback" method="_on_AudioStreamPlayer_finished"]
+[connection signal="pressed" from="MarginContainer/Workbench/Playback/Play" to="MarginContainer/Workbench/Playback" method="_on_Play_pressed"]
+[connection signal="toggled" from="MarginContainer/Workbench/Playback/Loop" to="MarginContainer/Workbench/Playback" method="_on_Loop_toggled"]
+[connection signal="pressed" from="MarginContainer/Workbench/Playback/Help" to="MarginContainer/Workbench/Playback" method="_on_Help_pressed"]
+[connection signal="pressed" from="MarginContainer/Workbench/Playback/Info" to="MarginContainer/Workbench/Playback" method="_on_Info_pressed"]
+[connection signal="meta_clicked" from="MarginContainer/Workbench/InfoBox/MarginContainer/HBoxContainer/RichTextLabel" to="MarginContainer/Workbench/InfoBox" method="_on_RichTextLabel_meta_clicked"]
+[connection signal="pressed" from="MarginContainer/Workbench/InfoBox/MarginContainer/HBoxContainer/Close" to="MarginContainer/Workbench/InfoBox" method="_on_Close_pressed"]
+[connection signal="pressed" from="MarginContainer/Workbench/PlaybackHelp/MarginContainer/HBoxContainer/Close" to="MarginContainer/Workbench/PlaybackHelp" method="_on_Close_pressed"]
+[connection signal="timeout" from="MarginContainer/Workbench/MessageBox/Timer" to="MarginContainer/Workbench/MessageBox" method="_on_Timer_timeout"]
+[connection signal="pressed" from="MarginContainer/Workbench/MessageBox/MarginContainer/HBoxContainer/Close" to="MarginContainer/Workbench/MessageBox" method="_on_Close_pressed"]
+[connection signal="pressed" from="MarginContainer/Workbench/Export/Clear" to="MarginContainer/Workbench/Export" method="_on_Clear_pressed"]
+[connection signal="pressed" from="MarginContainer/Workbench/Export/ExportPath" to="MarginContainer/Workbench/Export" method="_on_ExportPath_pressed"]
+[connection signal="pressed" from="MarginContainer/Workbench/Export/Export" to="MarginContainer/Workbench/Export" method="_on_Export_pressed"]
+[connection signal="dir_selected" from="MarginContainer/Workbench/Export/FileDialog" to="MarginContainer/Workbench/Export" method="_on_FileDialog_dir_selected"]
