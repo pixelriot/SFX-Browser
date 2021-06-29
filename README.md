@@ -14,7 +14,7 @@ SFX Browser is a fast and simple utility to browse through vast audio libraries 
 
 SFX Browser works great to pick the right sounds for your video game or software project, or just to rename a poorly labeled library.
 
-SFX Browser is build with the Godot engine and runs under Windows, Max OS and Linux. It’s free and open source for everybody to download, change and contribute to the project as one pleases.
+SFX Browser is build with the [Godot engine](https://github.com/godotengine/godot) and runs under Windows, Max OS and Linux. It’s free and open source for everybody to download, change and contribute to the project as one pleases.
 
 ---
 
