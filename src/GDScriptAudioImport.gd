@@ -28,7 +28,7 @@
 
 extends Node
 
-const ENABLE_PRINT = true
+const ENABLE_PRINT = false
 
 func loadfile(filepath, _loop = false):
 	var file = File.new()
