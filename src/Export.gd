@@ -48,7 +48,7 @@ func export_finished(amount:int) -> void:
 	if amount == 0:
 		emit_signal("display_message", tr("NO_EXPORT_FILES"))
 	else:
-		emit_signal("display_message", tr("EXPORT_INFO") % [str(amount), export_path])
+		emit_signal("display_message", tr("EXPORT_INFO") % [str(amount), export_path], Config.THEME_COLOR_GREEN)
 
 
 

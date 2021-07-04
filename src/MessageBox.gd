@@ -8,9 +8,10 @@ func _ready() -> void:
 	hide()
 
 
-func display_message(_text:String) -> void:
+func display_message(_text:String, _color:Color=Config.THEME_COLOR_RED) -> void:
 	modulate.a = 1
 	show()
+	get("custom_styles/panel").bg_color = _color
 	$MarginContainer/HBoxContainer/Label.text = _text
 	$Timer.start()
 

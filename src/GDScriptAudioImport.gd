@@ -28,7 +28,7 @@
 
 extends Node
 
-const ENABLE_PRINT = false
+const ENABLE_PRINT = true
 
 func loadfile(filepath, _loop = false):
 	var file = File.new()
@@ -62,10 +62,15 @@ func loadfile(filepath, _loop = false):
 
 				#get format code [Bytes 0-1]
 				var format_code = bytes[fsc0] + (bytes[fsc0+1] << 8)
-				var format_name
-				if format_code == 0: format_name = "8_BITS"
-				elif format_code == 1: format_name = "16_BITS"
-				elif format_code == 2: format_name = "IMA_ADPCM"
+				var format_name = ""
+				if format_code == AudioStreamSample.FORMAT_8_BITS:
+					format_name = "8_BITS"
+				elif format_code == AudioStreamSample.FORMAT_16_BITS:
+					format_name = "16_BITS"
+				elif format_code == AudioStreamSample.FORMAT_IMA_ADPCM:
+					format_name = "IMA_ADPCM"
+				else:
+					pass
 				_print ("Format: " + str(format_code) + " " + format_name)
 				#assign format to our AudioStreamSample
 				newstream.format = format_code
@@ -110,6 +115,7 @@ func loadfile(filepath, _loop = false):
 		var samplenum = newstream.data.size() / 4
 		newstream.loop_end = samplenum
 		newstream.loop_mode = 1 if _loop else 0 #change to 0 or delete this line if you don't want loop, also check out modes 2 and 3 in the docs
+
 		return newstream  #:D
 
 	#if file is ogg

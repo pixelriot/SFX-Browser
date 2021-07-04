@@ -12,7 +12,7 @@ onready var InfoBox := $MarginContainer/Workbench/InfoBox
 onready var MessageBox := $MarginContainer/Workbench/MessageBox
 
 func _ready() -> void:
-	VisualServer.set_default_clear_color(Color("464655"))
+	VisualServer.set_default_clear_color(Config.THEME_COLOR_BG)
 
 	DirectoryBrowser.connect("directory_changed", Playlist, "load_files_from_folder")
 	DirectoryBrowser.connect("directory_changed", Playback, "directory_changed")

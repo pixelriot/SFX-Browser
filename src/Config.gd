@@ -9,6 +9,11 @@ var CONFIGDATA = {	"main":{
 					}}
 var FAVOURITES = []
 
+const THEME_COLOR_GREEN = Color("ceeac7")
+const THEME_COLOR_BLUE = Color("bbd2d1")
+const THEME_COLOR_RED = Color("d67788")
+const THEME_COLOR_BG = Color("464655")
+
 
 func _init() -> void:
 	print("SFX Browser starting")
