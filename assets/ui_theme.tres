@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=27 format=2]
+[gd_resource type="Theme" load_steps=28 format=2]
 
 [ext_resource path="res://assets/fonts/IBMPlexMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/IBMPlexSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/ic_direction_right.svg" type="Texture" id=3]
 [ext_resource path="res://assets/ic_direction_down.svg" type="Texture" id=4]
 [ext_resource path="res://assets/ic_clear.svg" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/wqy-MicroHei.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -75,6 +76,7 @@ expand_margin_top = 24.0
 [sub_resource type="DynamicFont" id=21]
 size = 18
 font_data = ExtResource( 2 )
+fallback/0 = ExtResource( 6 )
 
 [resource]
 default_font = SubResource( 21 )

@@ -268,8 +268,8 @@ window_title = "Open a Directory"
 resizable = true
 mode = 2
 access = 2
-current_dir = "/home/richi/Projekte/gdsamplebrowser"
-current_path = "/home/richi/Projekte/gdsamplebrowser/"
+current_dir = "/home/richi/Projekte/SFX-Browser"
+current_path = "/home/richi/Projekte/SFX-Browser/"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 272.0
@@ -642,8 +642,8 @@ window_title = "Open a Directory"
 resizable = true
 mode = 2
 access = 2
-current_dir = "/home/richi/Projekte/gdsamplebrowser"
-current_path = "/home/richi/Projekte/gdsamplebrowser/"
+current_dir = "/home/richi/Projekte/SFX-Browser"
+current_path = "/home/richi/Projekte/SFX-Browser/"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/DirectoryBrowser/Load" to="PanelContainer/MarginContainer/DirectoryBrowser" method="_on_Load_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp/MarginContainer/HBoxContainer/Close" to="PanelContainer/MarginContainer/DirectoryBrowser/BrowserHelp" method="_on_Close_pressed"]
