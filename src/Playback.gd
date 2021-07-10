@@ -44,10 +44,25 @@ func _on_AudioStreamPlayer_finished() -> void:
 func play_audio(file_path:String="") -> void:
 	if file_path:
 		var stream = AudioImport.loadfile(file_path, is_looping)
+
+#		var new_path = copy_file_to_user_folder(file_path)
+#		yield(get_tree(), "idle_frame")
+#		yield(get_tree(), "idle_frame")
+#		yield(get_tree(), "idle_frame")
+#		var s = load(new_path)
+#		var stream = s
+
 		if stream:
 			AudioPlayer.stream = stream
 	AudioPlayer.play()
 	set_play_icon()
+
+
+#func copy_file_to_user_folder(file_path:String="") -> String:
+#	var dir = Directory.new()
+#	var new_file_name = OS.get_user_data_dir() + "/" + file_path.get_file()
+#	dir.copy(file_path, new_file_name)
+#	return new_file_name
 
 
 func stop_audio() -> void:

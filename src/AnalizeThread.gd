@@ -7,6 +7,8 @@ var _thread
 var lengths = []
 
 func analyze_files(file_paths=[]) -> void:
+	if _thread:
+		var _t = _thread.wait_to_finish()
 	_thread = Thread.new()
 	_thread.start(self, "_analyze", file_paths)
 

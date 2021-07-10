@@ -8,13 +8,19 @@ func set_data(idx:String, _file_path:String) -> void:
 	file_path = _file_path
 	$Idx.text = idx
 	$File.text = file_path.get_file()
+	$File.hint_tooltip = _file_path
 	if file_path in Config.FAVOURITES:
 		$Favourite.pressed = true
 	unfocus()
 
 
 func set_additional_data(length:float) -> void:
-	$Length.text = ( str(length).pad_decimals(2) )
+	var minutes = int(length)/60
+	if minutes > 0:
+		var seconds = length - minutes * 60
+		$Length.text = (  str(minutes) + ":" + str(seconds).pad_decimals(2) )
+	else:
+		$Length.text = ( str(length).pad_decimals(2) )
 
 
 func get_file_path() -> String:
@@ -35,7 +41,7 @@ func _on_ItemContainer_focus_entered() -> void:
 
 
 func unfocus() -> void:
-	modulate.a = 1
+	modulate.a = 0.9
 	$Icon.modulate.a = 0
 
 

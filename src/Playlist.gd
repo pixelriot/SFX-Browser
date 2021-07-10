@@ -47,6 +47,8 @@ func load_files_from_folder(_folder_path:String) -> void:
 		item.connect("focus_entered", self, "_on_item_selected", [item])
 		item.connect("gui_input", self, "_on_item_input", [item])
 
+	scroll_vertical = 0
+
 	#start analyze thread
 	AnalizeThread.call_deferred("analyze_files", file_list)
 	set_process(true)
